@@ -5,7 +5,7 @@ class Animal
                 @@all = []
 
         def initialize(name)
-               @is_animal = EventReceiver.new("animal", self)
+               @is_animal = EventReceiver.new("animal", self, 6)
                @name = name
                @tags = []
                @tags << @animal

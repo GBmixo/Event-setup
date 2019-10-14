@@ -4,7 +4,7 @@
 #Read the event class for pointers on variable definitions
 
 class EventSender
-        def self. make_event(sender, type, targets, priority = nil)
+        def self. make_event(sender, type, targets, priority = 0)
                new_event =  Event.new(sender, type, targets, priority)
                 send_event(new_event)
         end

@@ -31,7 +31,8 @@ class Person
 
         def hunts
                 puts "I, a person named #{self.name}, will hunt!"
-                EventSender.make_event(self, :collision, "person")
+                EventSender.make_event(self, :collision, "person", 5)
+                EventSender.make_event(self, :collision, "animal", 5)
         end
 
         def hunted

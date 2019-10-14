@@ -7,10 +7,11 @@
 #Targets is currently a single string or symbol that will call out any
 #object with an identical tag
 
-#choice doesn't do anuything right now and defaults to nil, ignore it
+#Priority is the minimum required priority necessary for the event
+#to apply. This can be changed in the EventReceiver class
 
 class Event
-        attr_reader :type, :targets, :choice
+        attr_reader :type, :targets, :priority
 
         def initialize(sender, type, targets, priority)
                 @type = type

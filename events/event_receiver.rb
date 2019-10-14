@@ -8,16 +8,20 @@
 #event type is defined  and act accordingly on the reciever.owner
 #object
 
+#if the reciever priority is less than or equal to the event priority
+#here, the event will apply to the receiver's owner
+
 class EventReceiver
-        attr_accessor :interactable_events
+        attr_accessor :interactable_events, :priority
         attr_reader :tag,  :owner
 
         @@sorted_alls = {}
         @@all = []
 
-        def initialize(tag, owner)
+        def initialize(tag, owner, priority = 0)
                 @tag = tag
                 @owner = owner
+                @priority = priority
                 @@all << self
                 if @@sorted_alls.has_key?(tag) == false
                         @@sorted_alls[tag] = []
@@ -36,7 +40,9 @@ class EventReceiver
         def self.receive_event(event)
                 @@sorted_alls[event.targets].each do |reciever|
                         #GIVE YOUR CLASSES EVENT_CALL METHODS
-                        reciever.owner.event_call(event)
+                        if event.priority <= reciever.priority
+                                reciever.owner.event_call(event)
+                        end
                 end
 
         end
